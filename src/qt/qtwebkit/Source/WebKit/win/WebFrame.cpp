@@ -145,7 +145,7 @@ const float PrintingMinimumShrinkFactor = 1.25f;
 // in order to accommodate the widest line. If the page would have to be
 // reduced smaller to make the widest line fit, we just clip instead (this
 // behavior matches MacIE and Mozilla, at least)
-const float PrintingMaximumShrinkFactor = 2.0f;
+const float PrintingMaximumShrinkFactor = 20.0f;
 
 //-----------------------------------------------------------------------------
 // Helpers to convert from WebCore to WebKit type

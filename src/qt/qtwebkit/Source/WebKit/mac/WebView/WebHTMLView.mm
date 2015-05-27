@@ -354,7 +354,7 @@ const float _WebHTMLViewPrintingMinimumShrinkFactor = 1.25;
 // in order to accommodate the widest line. If the page would have to be
 // reduced smaller to make the widest line fit, we just clip instead (this
 // behavior matches MacIE and Mozilla, at least)
-const float _WebHTMLViewPrintingMaximumShrinkFactor = 2;
+const float _WebHTMLViewPrintingMaximumShrinkFactor = 20;
 
 #define AUTOSCROLL_INTERVAL             0.1f
 
