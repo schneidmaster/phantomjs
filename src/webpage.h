@@ -81,6 +81,7 @@ class WebPage : public QObject, public QWebFrame::PrintCallback
     Q_PROPERTY(QString focusedFrameName READ focusedFrameName)
     Q_PROPERTY(QObject *cookieJar READ cookieJar WRITE setCookieJarFromQObject)
     Q_PROPERTY(QVariantList cookies READ cookies WRITE setCookies)
+    Q_PROPERTY(qreal dpi READ dpi WRITE setDpi)
 
 public:
     WebPage(QObject *parent, const QUrl &baseUrl = QUrl());
@@ -483,6 +484,25 @@ public slots:
 
     void clearMemoryCache();
 
+    /**
+     * Sets DPI for the web page
+     */
+    void setDpi(const qreal&);
+
+    /**
+     * Returns DPI value
+     */
+    qreal dpi() const;
+
+    /**
+     * Resets DPI value to its default value (for example, on Windows - 96)
+     */
+    void resetDpi();
+
+    qreal stringToPointSize(const QString&) const;
+    qreal printMargin(const QVariantMap&, const QString&);
+    qreal getHeight(const QVariantMap&, const QString&) const;
+
 signals:
     void initialized();
     void loadStarted();
@@ -542,6 +562,8 @@ private:
     int m_loadingProgress;
     bool m_shouldInterruptJs;
     CookieJar *m_cookieJar;
+    qreal m_dpi;
+    qreal m_defaultDpi;
 
     friend class Phantom;
     friend class CustomPage;
